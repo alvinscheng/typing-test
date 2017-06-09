@@ -9,3 +9,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   var $selected = document.querySelector('span')
   $selected.classList.add('selected')
 })
+
+document.addEventListener('keydown', function(event) {
+  $sentence.textContent = event.key
+})
