@@ -5,3 +5,7 @@ body {
 .selected {
   font-weight: 700;
 }
+
+.correct {
+  color: green;
+}
