@@ -12,9 +12,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 document.addEventListener('keydown', function(event) {
   var $selected = document.querySelector('.selected')
+  var $next = $selected.nextSibling
   if (event.key === $selected.textContent) {
     $selected.classList.remove('selected')
     $selected.classList.add('correct')
-    
+    $next.classList.add('selected')
   }
 })
