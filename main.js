@@ -5,13 +5,7 @@ for (var i = 0; i < sentence.length; i++) {
   $sentence.innerHTML += '<span>' + sentence[i] + '</span>'
 }
 
-
-
-// need $selected to be <p>
-// when page loads, select first letter
-/* document.addEventListener('DOMContentLoaded', function(event) {
-  var $selected = renderNode($sentence[0])
+document.addEventListener('DOMContentLoaded', function(event) {
+  var $selected = document.querySelector('span')
   $selected.classList.add('selected')
-  $sentence.appendChild($selected);
 })
-*/
