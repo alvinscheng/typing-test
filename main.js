@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 })
 
 var $last = $sentence.lastChild
+var error = 0
 document.addEventListener('keydown', function(event) {
   if ($last.getAttribute('class') !== 'selected') {
     var $selected = document.querySelector('.selected')
@@ -21,12 +22,19 @@ document.addEventListener('keydown', function(event) {
       $selected.classList.add('correct')
       $next.classList.add('selected')
     }
+    else {
+      error++
+    }
   }
   else if ($last.getAttribute('class') === 'selected') {
     var $selected = document.querySelector('.selected')
     if (event.key === $selected.textContent) {
       $selected.classList.remove('selected')
       $selected.classList.add('correct')
+      // Test complete! Show score
+    }
+    else {
+      error++
     }
   }
 })
