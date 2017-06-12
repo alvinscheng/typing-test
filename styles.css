@@ -1,11 +1,34 @@
 body {
+  color: lightGrey;
   text-align: center;
+  background-image: url('images/BG.jpg');
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  padding: 10px;
+  border-bottom: 1px solid lightGrey;
+}
+
+#sentence {
+  font-family: Arial;
+}
+
+.content {
+  margin-top: 40px;
+  padding: 10px;
 }
 
 .selected {
+  color: darkGrey;
   font-weight: 700;
+  font-size: 1.2em;
 }
 
 .correct {
-  color: green;
+  color: teal;
+}
+
+.wrong {
+  color: red;
 }
