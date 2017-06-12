@@ -47,11 +47,12 @@ document.addEventListener('keypress', function(event) {
     var $next = $selected.nextSibling
     if (event.key === $selected.textContent) {
       correct++
-      $selected.classList.remove('selected')
+      $selected.classList.remove('selected', 'wrong')
       $selected.classList.add('correct')
       $next.classList.add('selected')
     }
     else {
+      $selected.classList.add('wrong')
       error++
     }
   }
@@ -60,16 +61,17 @@ document.addEventListener('keypress', function(event) {
     if (event.key === $selected.textContent) {
       // Test is completed!
       correct++
-      $selected.classList.remove('selected')
+      $selected.classList.remove('selected', 'wrong')
       $selected.classList.add('correct')
       endTime = new Date()
-      totalTime = (endTime.getTime() - startTime.getTime()) / 1000
-      var wordsPerMin = Math.floor(words / totalTime * 60)
+      totalTime = (endTime.getTime() - startTime.getTime())
+      var wordsPerMin = Math.floor(words / totalTime * 1000 * 60)
       var score = 'Test complete! Your speed was ' + wordsPerMin + ' words per minute, and you made ' + error + ' typos.'
       var $score = renderScore(score)
       $container.appendChild($score)
     }
     else {
+      $selected.classList.add('wrong')
       error++
     }
   }
