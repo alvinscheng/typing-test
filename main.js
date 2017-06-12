@@ -1,14 +1,14 @@
 var quotes = [
-  '"Light travels faster than sound. This is why some people appear bright until you hear them speak." Alan Dundes',
-  'Remember, today is the tomorrow you worried about yesterday. -Dale Carnegie',
-  'When a man opens a car door for his wife, it\'s either a new car or a new wife. -Prince Phillip',
-  '"Some cause happiness wherever they go; others whenever they go." -Oscar Wilde',
-  'Age is an issue of mind over matter. If you don\'t mind, it doesn\'t matter. -Mark Twain',
-  '"People say nothing is impossible, but I do nothing every day." A. A. Milne',
-  'A bank is a place that will lend you money if you can prove that you don\'t need it. -Bob Hope',
-  '"My doctor gave me six months to live, but when I couldn\'t pay the bill he gave me six months more." -Walter Matthau',
-  '"I always arrive late at the office, but I make up for it by leaving early." Charles Lamb',
-  'No man has a good enough memory to be a successful liar. -Abraham Lincoln'
+  'Light travels faster than sound. This is why some people appear bright until you hear them speak.',
+  'Remember, today is the tomorrow you worried about yesterday.',
+  'When a man opens a car door for his wife, it\'s either a new car or a new wife.',
+  'Some cause happiness wherever they go; others whenever they go.',
+  'Age is an issue of mind over matter. If you don\'t mind, it doesn\'t matter.',
+  'People say nothing is impossible, but I do nothing every day.',
+  'A bank is a place that will lend you money if you can prove that you don\'t need it.',
+  'My doctor gave me six months to live, but when I couldn\'t pay the bill he gave me six months more.',
+  'I always arrive late at the office, but I make up for it by leaving early.',
+  'No man has a good enough memory to be a successful liar.'
 ]
 
 function getQuote() {
