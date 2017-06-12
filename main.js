@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 var $last = $sentence.lastChild
 var error = 0
+var correct = 0
+var words = sentence.split(' ').length
 var $container = document.querySelector('.container')
 var startTime, endTime, totalTime
 document.addEventListener('keypress', function(event) {
@@ -44,6 +46,7 @@ document.addEventListener('keypress', function(event) {
     var $selected = document.querySelector('.selected')
     var $next = $selected.nextSibling
     if (event.key === $selected.textContent) {
+      correct++
       $selected.classList.remove('selected')
       $selected.classList.add('correct')
       $next.classList.add('selected')
@@ -56,11 +59,13 @@ document.addEventListener('keypress', function(event) {
     var $selected = document.querySelector('.selected')
     if (event.key === $selected.textContent) {
       // Test is completed!
+      correct++
       $selected.classList.remove('selected')
       $selected.classList.add('correct')
       endTime = new Date()
       totalTime = (endTime.getTime() - startTime.getTime()) / 1000
-      var score = 'Test complete! You took ' + totalTime + ' seconds and made ' + error + ' typos.'
+      var wordsPerMin = Math.floor(words / totalTime * 60)
+      var score = 'Test complete! Your speed was ' + wordsPerMin + ' words per minute, and you made ' + error + ' typos.'
       var $score = renderScore(score)
       $container.appendChild($score)
     }
