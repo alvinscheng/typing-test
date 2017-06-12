@@ -16,6 +16,10 @@ function getQuote() {
   return quotes[randomInt]
 }
 
+function refresh() {
+  location.reload()
+}
+
 var $sentence = document.querySelector("#sentence")
 var sentence = getQuote()
 
