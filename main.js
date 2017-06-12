@@ -27,58 +27,53 @@ for (var i = 0; i < sentence.length; i++) {
   $sentence.innerHTML += '<span>' + sentence[i] + '</span>'
 }
 
-var $first = document.querySelector('span')
+var $selected = document.querySelector('span')
 document.addEventListener('DOMContentLoaded', function(event) {
-  $first.classList.add('selected')
+  $selected.classList.add('selected')
 })
 
 var $last = $sentence.lastChild
-var error = 0
-var correct = 0
+var errorCount = 0
+var correctCount = 0
 var words = sentence.split(' ').length
 var $container = document.querySelector('.container')
-var startTime, endTime, totalTime
+var startTime, endTime, totalTime, wordsPerMin
+
 document.addEventListener('keypress', function(event) {
-  if (event.key === $first.textContent) {
-    startTime = new Date()
-  }
-  if ($last.getAttribute('class') !== 'selected') {
-    var $selected = document.querySelector('.selected')
-    var $next = $selected.nextSibling
-    if (event.key === $selected.textContent) {
-      correct++
-      $selected.classList.remove('selected', 'wrong')
-      $selected.classList.add('correct')
-      $next.classList.add('selected')
+  if (!$selected) return
+  if (event.key === $selected.textContent) {
+    correctCount++
+    if (correctCount === 1) {
+      startTime = new Date()
     }
-    else {
-      $selected.classList.add('wrong')
-      error++
-    }
-  }
-  else if ($last.getAttribute('class') === 'selected') {
-    var $selected = document.querySelector('.selected')
-    if (event.key === $selected.textContent) {
-      // Test is completed!
-      correct++
-      $selected.classList.remove('selected', 'wrong')
-      $selected.classList.add('correct')
+    $selected.classList.remove('selected', 'wrong')
+    $selected.classList.add('correct')
+    if (correctCount === sentence.length) {
       endTime = new Date()
       totalTime = (endTime.getTime() - startTime.getTime())
-      var wordsPerMin = Math.floor(words / totalTime * 1000 * 60)
-      var score = 'Test complete! Your speed was ' + wordsPerMin + ' words per minute, and you made ' + error + ' typos.'
-      var $score = renderScore(score)
-      $container.appendChild($score)
+      wordsPerMin = Math.floor(words / totalTime * 1000 * 60)
+      $container.appendChild(renderScore(errorCount))
     }
-    else {
-      $selected.classList.add('wrong')
-      error++
-    }
+    $selected = $selected.nextSibling
+    if (!$selected) return
+    $selected.classList.add('selected')
+  }
+  else {
+    $selected.classList.add('wrong')
+    errorCount++
   }
 })
 
-function renderScore(text) {
+function renderScore(errors) {
   var $score = document.createElement('p')
-  $score.textContent = text
+  if (errors === 0) {
+    $score.textContent = 'Good job! Your speed was ' + wordsPerMin + ' words per minute, and made 0 typos!'
+  }
+  else if (errors === 1) {
+    $score.textContent = 'Test complete! Your speed was ' + wordsPerMin + ' words per minute, and you made 1 typo.'
+  }
+  else {
+    $score.textContent = 'Test complete! Your speed was ' + wordsPerMin + ' words per minute, and you made ' + errorCount + ' typos.'
+  }
   return $score
 }
